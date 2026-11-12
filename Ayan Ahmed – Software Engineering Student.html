@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ayan Ahmed – Software Engineering Student</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ebe7ff; --ink:#15121f; --card:#ffffff; --soft:#f3f0ff; --accent:#ffd23f; --on-accent:#15121f; --danger:#ff6b6b;
+  --head:"Space Grotesk","Trebuchet MS",sans-serif; --mono:"DM Mono",ui-monospace,Consolas,monospace;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#13111c;--ink:#f3f0ff;--card:#1d1a2b;--soft:#262238}
+}
+:root[data-theme="dark"]{--bg:#13111c;--ink:#f3f0ff;--card:#1d1a2b;--soft:#262238}
+html{scroll-padding-top:5rem;scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;color:var(--ink);font-family:var(--head);font-size:1.05rem;line-height:1.6;background:radial-gradient(60rem 30rem at 10% -5%,color-mix(in srgb,var(--accent) 50%,transparent),transparent 70%),radial-gradient(50rem 30rem at 100% 25%,rgba(150,120,255,.35),transparent 70%),var(--bg)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 1.25rem}
+nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + .75rem);z-index:11;margin:.75rem auto 0;width:max-content;max-width:100%;display:flex;gap:.25rem;padding:.35rem;background:color-mix(in srgb,var(--card) 78%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:3px solid var(--ink);border-radius:999px;box-shadow:4px 4px 0 var(--ink)}
+nav a{padding:.4rem 1rem;border-radius:999px;text-decoration:none;font-weight:700;font-size:.95rem}
+nav a:hover{background:var(--accent);color:var(--on-accent)}
+.hero{padding:4.5rem 0 3rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+.chip{font-family:var(--mono);font-size:.85rem;padding:.3rem .8rem;border:3px solid var(--ink);border-radius:999px;background:var(--card)}
+.chip.hot{background:var(--accent);color:var(--on-accent)}
+h1{font-weight:700;font-size:clamp(3.4rem,15vw,8rem);line-height:.9;letter-spacing:-.05em;margin:0;color:var(--ink)}
+h1 .dot{color:var(--accent);-webkit-text-stroke:3px var(--ink)}
+.lead{font-size:clamp(1.15rem,3.5vw,1.5rem);max-width:34rem;margin:1.5rem 0 2rem;font-weight:500}
+.btn{display:inline-block;font-weight:700;text-decoration:none;padding:.85rem 1.5rem;border:3px solid var(--ink);border-radius:14px;background:var(--accent);color:var(--on-accent);box-shadow:5px 5px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn.alt{background:var(--card);color:var(--ink);margin-left:.5rem}
+.pick{margin-top:2rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;font-family:var(--mono);font-size:.85rem}
+.pick button{width:30px;height:30px;border-radius:50%;border:3px solid var(--ink);padding:0;cursor:pointer}
+.pick button[aria-pressed="true"]{box-shadow:0 0 0 3px var(--bg),0 0 0 6px var(--ink)}
+section{padding:3rem 0 1rem}
+h2{font-size:clamp(2rem,6vw,3rem);letter-spacing:-.03em;margin:0 0 1.25rem;line-height:1}
+.card{background:var(--card);border:3px solid var(--ink);border-radius:20px;box-shadow:6px 6px 0 var(--ink);padding:1.5rem}
+.card p{margin:0 0 1rem;max-width:58ch}
+.card p:last-child{margin:0}
+.mail{display:inline-block;margin-top:.5rem;font-family:var(--mono);font-weight:500;background:var(--accent);color:var(--on-accent);border:3px solid var(--ink);border-radius:14px;padding:.7rem 1.1rem;text-decoration:none;word-break:break-all;box-shadow:4px 4px 0 var(--ink)}
+.mail:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+.skill{background:var(--card);border:3px solid var(--ink);border-radius:20px;padding:1.25rem;box-shadow:6px 6px 0 var(--ink)}
+.skill h3{margin:0 0 .25rem;font-size:1.5rem}
+.skill p{margin:0 0 .9rem;font-size:.95rem;opacity:.8}
+.bar{height:14px;border:3px solid var(--ink);border-radius:999px;overflow:hidden;background:var(--soft)}
+.bar i{display:block;height:100%;background:var(--accent)}
+.proj{display:grid;grid-template-columns:1fr;gap:1.5rem;align-items:start}
+@media (min-width:760px){.proj{grid-template-columns:1fr 340px}}
+.proj h3{font-size:1.8rem;margin:0 0 .5rem;letter-spacing:-.02em}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.calc{background:var(--ink);color:var(--bg);border-radius:20px;padding:1rem;border:3px solid var(--ink);width:100%;max-width:340px;justify-self:center}
+.screen{background:var(--soft);color:var(--ink);border-radius:12px;padding:.7rem 1rem;text-align:right;font-family:var(--mono);min-height:5.2rem;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;margin-bottom:.8rem}
+.hist{font-size:.85rem;opacity:.6;min-height:1.3rem;white-space:nowrap}
+.out{font-size:2.2rem;font-weight:500;line-height:1.2;white-space:nowrap}
+.keys{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+.keys button{font-family:var(--mono);font-size:1.25rem;font-weight:500;padding:.8rem 0;border:3px solid var(--ink);border-radius:12px;cursor:pointer;background:var(--card);color:#15121f;box-shadow:0 4px 0 rgba(0,0,0,.45);transition:transform .08s,box-shadow .08s}
+.keys button:active{transform:translateY(4px);box-shadow:0 0 0 rgba(0,0,0,.45)}
+.keys .op{background:var(--accent)}
+.keys .fn{background:#cfc8ff}
+.keys .ac{background:var(--danger)}
+.keys .eq{background:#15121f;color:#fff;border-color:#fff}
+.keys .zero{grid-column:span 2}
+.keys .eq{grid-column:span 2}
+.minis{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:1.25rem}
+.mini{background:var(--card);border:3px dashed var(--ink);border-radius:20px;padding:1.25rem}
+.mini h3{margin:0 0 .25rem}
+.mini p{margin:0;opacity:.75;font-size:.95rem}
+footer{padding:3rem 0 3rem;font-family:var(--mono);font-size:.85rem;opacity:.8}
+.namebox{position:relative;display:inline-block}
+.sticker{position:absolute;right:-.5rem;top:-.9rem;transform:rotate(10deg);background:var(--accent);color:var(--on-accent);border:3px solid var(--ink);border-radius:14px;padding:.35rem .8rem;font-family:var(--mono);font-size:.9rem;box-shadow:4px 4px 0 var(--ink)}
+h2::after{content:"";display:block;width:64px;height:10px;margin-top:.7rem;background:var(--accent);border:3px solid var(--ink);border-radius:999px}
+.card,.skill,.mini{transition:transform .18s,box-shadow .18s}
+.card:hover,.skill:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink)}
+.skill{color:#15121f}
+.skills .skill:nth-child(1){background:#ffd6e7}
+.skills .skill:nth-child(2){background:#cfe8ff}
+.skills .skill:nth-child(3){background:#d6ffe6}
+.skills .skill:nth-child(4){background:#ffe9c2}
+.skills .skill:nth-child(5){background:#e0d6ff}
+.strip{margin:1.5rem 0 0;margin-left:calc(50% - 50vw);width:100vw;transform:rotate(-1.5deg);background:var(--ink);color:var(--bg);overflow:hidden;padding:.75rem 0}
+.track{display:flex;width:max-content;animation:slide 24s linear infinite}
+.track span{padding:0 1.5rem;font-weight:700;font-size:1.2rem;white-space:nowrap}
+@keyframes slide{to{transform:translateX(-50%)}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.hero>*:nth-child(2){animation-delay:.08s}.hero>*:nth-child(3){animation-delay:.16s}.hero>*:nth-child(4){animation-delay:.24s}.hero>*:nth-child(5){animation-delay:.32s}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.keys button,.mail,.card,.skill,.mini{transition:none}.track,.hero>*{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Main"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a></nav>
+
+  <header class="hero">
+    <div class="chips"><span class="chip hot">Software Eng. student</span><span class="chip">Age 17</span><span class="chip">Karachi, PK</span></div>
+    <div class="namebox"><h1>Ayan Ahmed<span class="dot">.</span></h1><span class="sticker">Rising kid 🚀</span></div>
+    <p class="lead">I build websites and small apps, I’m learning PHP, databases and Java OOP, and I’m aiming to become a professional software engineer.</p>
+    <a class="btn" href="#projects">Try my calculator</a><a class="btn alt" href="mailto:aazanahmed3@gmail.com">Email me</a>
+    <div class="pick" role="group" aria-label="Choose accent color">
+      <span>Pick a color (JavaScript):</span>
+      <button style="background:#ffd23f" data-c="#ffd23f" aria-pressed="true" aria-label="Yellow"></button>
+      <button style="background:#7be0ad" data-c="#7be0ad" aria-pressed="false" aria-label="Green"></button>
+      <button style="background:#ff8fab" data-c="#ff8fab" aria-pressed="false" aria-label="Pink"></button>
+      <button style="background:#8ecbff" data-c="#8ecbff" aria-pressed="false" aria-label="Blue"></button>
+    </div>
+  </header>
+
+  <div class="strip" aria-hidden="true"><div class="track">
+    <span>HTML &amp; CSS ✦</span><span>JavaScript ✦</span><span>PHP ✦</span><span>Database ✦</span><span>Java OOP ✦</span><span>Always learning ✦</span>
+    <span>HTML &amp; CSS ✦</span><span>JavaScript ✦</span><span>PHP ✦</span><span>Database ✦</span><span>Java OOP ✦</span><span>Always learning ✦</span>
+  </div></div>
+
+  <section id="about">
+    <h2>About me</h2>
+    <div class="card">
+      <p>I’m Ayan Ahmed, a software engineering student from Karachi, Pakistan. I like turning an idea into something people can open in a browser and click.</p>
+      <p>Right now I’m focused on web development. My goal is to become a professional software engineer and build useful apps.</p>
+      <a class="mail" href="mailto:aazanahmed3@gmail.com">aazanahmed3@gmail.com</a>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill"><h3>HTML &amp; CSS</h3><p>Page structure, responsive layouts, clean styling.</p></div>
+      <div class="skill"><h3>JavaScript</h3><p>Events, the DOM, interactivity. Try the calculator below.</p></div>
+      <div class="skill"><h3>PHP</h3><p>Server-side basics for dynamic websites.</p></div>
+      <div class="skill"><h3>Database</h3><p>Storing, reading and managing data.</p></div>
+      <div class="skill"><h3>Java OOP</h3><p>Classes, objects, inheritance and more.</p></div>
+      <div class="skill" style="background:var(--accent);color:var(--on-accent)"><h3>And more…</h3><p style="opacity:1">Always learning. Rising kid 🚀</p></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card proj">
+      <div>
+        <h3>Calculator</h3>
+        <p>A working calculator made with HTML, CSS and JavaScript. Use the buttons or your keyboard: numbers, + − × ÷, Enter to calculate, Backspace to delete, Esc to clear.</p>
+        <div class="tags"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div>
+      </div>
+      <div class="calc" id="calc" aria-label="Calculator">
+        <div class="screen" aria-live="polite"><div class="hist" id="hist"></div><div class="out" id="out">0</div></div>
+        <div class="keys">
+          <button class="ac" data-k="ac">AC</button><button class="fn" data-k="neg">±</button><button class="fn" data-k="pct">%</button><button class="op" data-k="/">÷</button>
+          <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button><button class="op" data-k="*">×</button>
+          <button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button><button class="op" data-k="-">−</button>
+          <button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button><button class="op" data-k="+">+</button>
+          <button class="zero" data-k="0">0</button><button data-k=".">.</button><button class="fn" data-k="del">⌫</button>
+          <button class="eq" data-k="=">=</button>
+        </div>
+      </div>
+    </div>
+    <div class="minis">
+      <!-- TODO: replace these with your real projects -->
+      <div class="mini"><h3>To-do app</h3><p>Coming soon. Replace with your own project.</p></div>
+      <div class="mini"><h3>Weather app</h3><p>Coming soon. Replace with your own project.</p></div>
+    </div>
+  </section>
+
+  <footer>© <span id="yr">2026</span> Ayan Ahmed · aazanahmed3@gmail.com</footer>
+</div>
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+document.querySelectorAll('.pick button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.documentElement.style.setProperty('--accent',b.dataset.c);
+    document.querySelectorAll('.pick button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+  });
+});
+
+(function(){
+  var out=document.getElementById('out'),hist=document.getElementById('hist');
+  var cur='0',prev=null,op=null,fresh=false,sym={'+':'+','-':'−','*':'×','/':'÷'};
+  function fmt(s){
+    if(s==='Error')return s;
+    var n=parseFloat(s); if(!isFinite(n))return 'Error';
+    if(Math.abs(n)>=1e12||(Math.abs(n)<1e-9&&n!==0))return n.toExponential(5);
+    var p=s.split('.'),i=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');
+    return p.length>1?i+'.'+p[1]:i;
+  }
+  function show(){
+    out.textContent=fmt(cur);
+    out.style.fontSize=out.textContent.length>11?'1.4rem':(out.textContent.length>8?'1.8rem':'2.2rem');
+    hist.textContent=op?fmt(String(prev))+' '+sym[op]:'';
+  }
+  function calc(a,b,o){
+    a=parseFloat(a);b=parseFloat(b);var r;
+    if(o==='+')r=a+b;else if(o==='-')r=a-b;else if(o==='*')r=a*b;else r=b===0?NaN:a/b;
+    return isFinite(r)?String(parseFloat(r.toPrecision(12))):'Error';
+  }
+  function press(k){
+    if(cur==='Error'&&k!=='ac'){cur='0';prev=null;op=null;}
+    if(/^[0-9]$/.test(k)){
+      if(fresh||cur==='0'){cur=k;fresh=false}else if(cur.replace(/[-.]/g,'').length<12)cur+=k;
+    }else if(k==='.'){
+      if(fresh){cur='0.';fresh=false}else if(cur.indexOf('.')<0)cur+='.';
+    }else if(k==='ac'){cur='0';prev=null;op=null;fresh=false;
+    }else if(k==='del'){
+      if(!fresh)cur=cur.length>1&&!(cur.length===2&&cur[0]==='-')?cur.slice(0,-1):'0';
+    }else if(k==='neg'){
+      if(cur!=='0')cur=cur[0]==='-'?cur.slice(1):'-'+cur;
+    }else if(k==='pct'){
+      cur=String(parseFloat((parseFloat(cur)/100).toPrecision(12)));
+    }else if(k==='='){
+      if(op!==null){cur=calc(prev,cur,op);prev=null;op=null;fresh=true;}
+    }else{
+      if(op!==null&&!fresh){cur=calc(prev,cur,op);}
+      prev=cur;op=k;fresh=true;
+      if(cur==='Error'){prev=null;op=null;}
+    }
+    show();
+  }
+  document.getElementById('calc').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(b)press(b.dataset.k);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.ctrlKey||e.metaKey||e.altKey)return;
+    var t=e.target.tagName; if(t==='INPUT'||t==='TEXTAREA')return;
+    var k=e.key;
+    if(/^[0-9.]$/.test(k)||'+-*/'.indexOf(k)>-1&&k.length===1){press(k);e.preventDefault();}
+    else if(k==='Enter'||k==='='){if(document.activeElement.closest&&document.activeElement.closest('.keys'))return;press('=');e.preventDefault();}
+    else if(k==='Backspace'){press('del');}
+    else if(k==='Escape'){press('ac');}
+    else if(k==='%'){press('pct');}
+  });
+  show();
+})();
+</script>
+</body>
+</html>
